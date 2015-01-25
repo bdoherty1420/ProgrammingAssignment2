@@ -1,7 +1,10 @@
-## Put comments here that give an overall description of what your
-## functions do
+## These functions have the ability to cache the inversion of a matrix in order to
+## save time running this computation for large matrices
 
-## Write a short comment describing this function
+## This function creates as special "matrix" that contains a function to:
+## 1. set the value of the matrix 2. get the value of the matrix
+## 3. set the value of the inverted matrix 4. get the value of the inverted
+## matrix
 
 makeCacheMatrix <- function(x = matrix()) {
         i <- NULL
@@ -11,14 +14,17 @@ makeCacheMatrix <- function(x = matrix()) {
         }
         get <- function() x
         setinversion <- function(solve) i <<- solve
-        get inversion <- function() i
+        getinversion <- function() i
         list(set = set, get = get,
-             setmean = setmean,
-             getmean = getmean)
+             setinversion = setinversion,
+             getinversion = getinversion)
 }
 
 
-## Write a short comment describing this function
+## This function calculates the inversion of the special "matrix" created
+## with the above function. It checks to see if the inversion has been 
+## calculated, in which case it gets the cached calculation, otherwise
+## it calculates and set the inverted matrix
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
